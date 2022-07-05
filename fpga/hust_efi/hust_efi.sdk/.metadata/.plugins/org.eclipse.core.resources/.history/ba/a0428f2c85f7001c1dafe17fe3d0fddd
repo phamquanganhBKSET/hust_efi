@@ -1,0 +1,71 @@
+#ifndef TPS_H
+#define TPS_H
+
+#include <iostream>
+#include "GlobalDefines.hpp"
+#include "../lib/Array.hpp"
+#include "../lib/Math.hpp"
+#include "efi_virtual_input.h"
+#include "xparameters.h"
+#include "xgpio.h"
+
+//=================================================
+
+#ifdef SYSTEMC
+#include <systemc.h>
+
+using namespace sc_core;
+
+class TPS : public sc_module {
+
+private:
+	float data;
+	float** TPSSSTable;
+
+public:
+
+	sc_port<sc_signal_in_if<float>> input;
+
+	SC_CTOR(TPS) : data(0) {
+		TPSSSTable = Array::create(TPSSS_ROWS, TPSSS_COLS);
+	};
+
+	void loadTable(char path[]);
+	
+	void check();
+
+	float getData();
+
+};
+
+//=================================================
+
+#else
+
+class TPS {
+
+private:
+	float data;
+	float** TPSSSTable;
+
+public:
+
+#ifdef SYSTEMC
+	sc_port<sc_signal_in_if<float>> input;
+#endif
+
+	TPS();
+
+	void loadTable(char path[]);
+	
+	void check();
+
+	float getData();
+
+};
+
+#endif
+
+//=================================================
+
+#endif

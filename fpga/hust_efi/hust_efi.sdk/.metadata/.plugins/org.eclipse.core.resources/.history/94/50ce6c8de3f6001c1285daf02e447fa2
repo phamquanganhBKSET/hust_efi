@@ -1,0 +1,73 @@
+#include "../include/EFI.hpp"
+
+float  EFI::RPM = 0;
+float  EFI::ignitionTime = 0;
+string EFI::stroke = "";
+bool   EFI::allowedInjection = 0;
+bool   EFI::allowedIgnition = 0;
+float  EFI::BTDC = 0;
+int    EFI::crankCounter = 0;
+
+EFI::EFI() {
+	MAPSensor.loadTable("../../data/sensors/MAP.txt");
+	MATSensor.loadTable("../../data/sensors/MAT.txt");
+	CLTSensor.loadTable("../../data/sensors/CLT.txt");
+	TPSSensor.loadTable("../../data/sensors/TPS.txt");
+	EGOSensor.loadTable("../../data/sensors/EGO.txt");
+};
+
+bool EFI::getCheckEngineLight() {
+	return checkEngineLight;
+}
+
+bool EFI::setCheckEngineLight(bool checkEngineLight) {
+	this->checkEngineLight = checkEngineLight;
+}
+
+void EFI::turnOnFIC() {
+	ficSTM->onEvent(&ficevent[1]);
+}
+
+void EFI::turnOffFIC() {
+	ficSTM->onEvent(&ficevent[0]);
+}
+
+void EFI::turnOnIC() {
+	icSTM->onEvent(&icevent[1]);
+}
+
+void EFI::turnOffIC() {
+	ficSTM->onEvent(&ficevent[0]);
+}
+
+void EFI::crankTick() {
+	#if CYLINDERS == 1
+	sSTM->onEvent(&sevent[2]);
+	#else
+	for (int i = 0; i < CYLINDERS; ++i)
+	{
+		sSTM[i]->onEvent(&sevent[2]);
+	}
+	#endif
+}
+
+void EFI::allowInject() {
+	ficSTM->onEvent(&ficevent[3]);
+}
+
+void EFI::allowIgnite() {
+	icSTM->onEvent(&icevent[3]);
+}
+
+void EFI::checkSensor() {
+	MAPSensor.check();
+	MATSensor.check();
+	CLTSensor.check();
+	TPSSensor.check();
+	EGOSensor.check();
+	CKPSensor.check();
+}
+
+void EFI::updateTable() {
+	ficSTM->onEvent(&ficevent[4]);
+};

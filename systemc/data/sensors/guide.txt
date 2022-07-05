@@ -1,0 +1,19 @@
+1. MAP sensor:
++) First line: Voltage (V)
++) Second line: MAP (kPa)
+
+2. MAT sensor:
++) First line: Voltage (V)
++) Second line: MAT (Celcius)
+
+3. EGO:
++) First line: Voltage (V)
++) Second line: AFR (Air Fuel Ratio)
+
+4. CLT:
++) First line: Voltage (V)
++) Second line: Temperature (Celcius)
+
+5. TPS:
++) First line: Voltage (V)
++) Second line: Angle

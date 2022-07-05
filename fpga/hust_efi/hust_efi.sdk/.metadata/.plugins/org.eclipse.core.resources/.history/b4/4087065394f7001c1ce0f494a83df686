@@ -1,0 +1,115 @@
+#ifndef FIC_H
+#define FIC_H
+
+#include <iostream>
+#include <string.h>
+#include <unistd.h>
+#include <math.h>
+#include "GlobalDefines.hpp"
+#include "../lib/Array.hpp"
+#include "../lib/Math.hpp"
+
+//=================================================
+
+#ifdef SYSTEMC
+#include <systemc.h>
+
+using namespace sc_core;
+
+class FuelInjectionControl : public sc_module {
+
+private:
+	float injectionTime; // in ms
+
+	bool on;
+
+	float** AFRTable;
+
+	float VETable[][];
+
+	float WarmUpTable[][];
+
+	float OxygenLoopTable[][];
+
+public:
+	SC_CTOR(FuelInjectionControl) : injectionTime(0) {
+		AFRTable = Array::create(AFR_ROWS, AFR_COLS);
+		VETable = Array::create(VE_ROWS, VE_COLS);
+		WarmUpTable = Array::create(WARM_UP_ROWS, WARM_UP_COLS);
+		OxygenLoopTable = Array::create(EGO_ROWS, EGO_COLS);
+		AccelerationTable = Array::create(ACCEL_ROWS, ACCEL_COLS);
+	}
+
+	bool loadTable(char path[]);
+
+	void updateTable(char path[], float MAP, float RPM, float EGO);
+
+	void inject();
+
+	float getInjectionTime();
+
+	void setInjectionTime(float injectionTime);
+
+	float airDensity(float MAT, float MAP);
+
+	float requiredFuel(float MAT, float MAP, float RPM);
+
+	float gammaEnrichment(float CLT, float EGO, float MAP, float RPM);
+
+	float pulseWidth(float CLT, float EGO, float MAT, float MAP, float RPM);
+	
+};
+
+//=================================================
+
+#else
+
+class FuelInjectionControl {
+
+private:
+	float injectionTime; // in ms
+
+	bool on;
+
+	float** AFRTable;
+
+	float VETable[VE_ROWS][VE_COLS];
+
+	float WarmUpTable[][];
+
+	float OxygenLoopTable[][];
+
+public:
+	FuelInjectionControl();
+
+	bool loadTable(char path[]);
+
+	void updateTable(char path[], float MAP, float RPM, float EGO);
+	
+	void inject();
+
+	bool getOn();
+
+	void turnOn();
+
+	void turnOff();
+
+	float getInjectionTime();
+
+	void setInjectionTime(float injectionTime);
+
+	float airDensity(float MAT, float MAP);
+
+	float requiredFuel(float MAT, float MAP, float RPM);
+
+	float gammaEnrichment(float CLT, float EGO, float MAP, float RPM);
+
+	float pulseWidth(float CLT, float EGO, float MAT, float MAP, float RPM);
+	
+};
+
+#endif
+
+//=================================================
+
+#endif

@@ -1,0 +1,20 @@
+#include "../include/CLT.hpp"
+
+CLT::CLT() {
+	CLTSSTable = Array::create(CLTSS_ROWS, CLTSS_COLS);
+	data = 0;
+}
+
+void CLT::loadTable(char path[]) {
+    File::read(path, this->CLTSSTable, CLTSS_ROWS, CLTSS_COLS);
+}
+
+void CLT::check() {
+	float voltage = (float)EFI_VIRTUAL_INPUT_mReadReg(VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG2_OFFSET);
+	this->data = Math::interpolation1d(this->CLTSSTable, voltage, CLTSS_COLS);
+	std::cout << "CLT sensor read, voltage = " << voltage << " -> temperature = " << this->data << std::endl;
+}
+
+float CLT::getData() {
+	return this->data;
+}

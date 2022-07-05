@@ -1,0 +1,141 @@
+07:39:50 **** Build of configuration Debug for project hust_efi_1 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/CKP.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/CKP.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/CKP.d" -MT"src/CKP.o" -o "src/CKP.o" "../src/CKP.cpp"
+'Finished building: ../src/CKP.cpp'
+' '
+'Building file: ../src/CLT.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/CLT.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/CLT.d" -MT"src/CLT.o" -o "src/CLT.o" "../src/CLT.cpp"
+'Finished building: ../src/CLT.cpp'
+' '
+'Building file: ../src/Communication.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Communication.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Communication.d" -MT"src/Communication.o" -o "src/Communication.o" "../src/Communication.cpp"
+'Finished building: ../src/Communication.cpp'
+' '
+'Building file: ../src/EFI.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/EFI.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/EFI.d" -MT"src/EFI.o" -o "src/EFI.o" "../src/EFI.cpp"
+../src/EFI.cpp: In constructor 'EFI::EFI()':
+../src/EFI.cpp:10:43: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  bool empty = FIC.loadTable("data/backup/");
+                                           ^
+../src/EFI.cpp:13:32: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+   FIC.loadTable("data/initial/");
+                                ^
+../src/EFI.cpp: In member function 'bool EFI::setCheckEngineLight(bool)':
+../src/EFI.cpp:29:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../src/EFI.cpp: In member function 'void EFI::updateTable(char*, float, float, float)':
+../src/EFI.cpp:90:35: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+  FIC.updateTable("", MAP, RPM, EGO);
+                                   ^
+'Finished building: ../src/EFI.cpp'
+' '
+'Building file: ../src/EGO.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/EGO.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/EGO.d" -MT"src/EGO.o" -o "src/EGO.o" "../src/EGO.cpp"
+'Finished building: ../src/EGO.cpp'
+' '
+'Building file: ../src/Engine.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/Engine.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/Engine.d" -MT"src/Engine.o" -o "src/Engine.o" "../src/Engine.cpp"
+'Finished building: ../src/Engine.cpp'
+' '
+'Building file: ../src/FuelInjectionControl.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/FuelInjectionControl.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/FuelInjectionControl.d" -MT"src/FuelInjectionControl.o" -o "src/FuelInjectionControl.o" "../src/FuelInjectionControl.cpp"
+'Finished building: ../src/FuelInjectionControl.cpp'
+' '
+'Building file: ../src/IgnitionControl.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/IgnitionControl.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/IgnitionControl.d" -MT"src/IgnitionControl.o" -o "src/IgnitionControl.o" "../src/IgnitionControl.cpp"
+'Finished building: ../src/IgnitionControl.cpp'
+' '
+'Building file: ../src/MAP.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/MAP.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/MAP.d" -MT"src/MAP.o" -o "src/MAP.o" "../src/MAP.cpp"
+'Finished building: ../src/MAP.cpp'
+' '
+'Building file: ../src/MAT.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/MAT.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/MAT.d" -MT"src/MAT.o" -o "src/MAT.o" "../src/MAT.cpp"
+'Finished building: ../src/MAT.cpp'
+' '
+'Building file: ../src/main.cc'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function 'int main()':
+../src/main.cc:38:7: warning: unused variable 'efi' [-Wunused-variable]
+  EFI* efi = new EFI();
+       ^~~
+'Finished building: ../src/main.cc'
+' '
+'Building file: ../lib/Array.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"lib/Array.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"lib/Array.d" -MT"lib/Array.o" -o "lib/Array.o" "../lib/Array.cpp"
+'Finished building: ../lib/Array.cpp'
+' '
+'Building file: ../lib/File.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"lib/File.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"lib/File.d" -MT"lib/File.o" -o "lib/File.o" "../lib/File.cpp"
+../lib/File.cpp: In static member function 'static bool File::read(const char*, float**, int, int)':
+../lib/File.cpp:27:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (int i = 0; i < fptr->obj.objsize; i ++) {
+                  ~~^~~~~~~~~~~~~~~~~~~
+../lib/File.cpp: In static member function 'static bool File::write(const char*, float**, int, int)':
+../lib/File.cpp:64:22: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+    for (int i = 0; i < str.length(); i++) {
+                    ~~^~~~~~~~~~~~~~
+../lib/File.cpp:77:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (int i = 0; i < v.size(); i++) {
+                  ~~^~~~~~~~~~
+../lib/File.cpp:54:10: warning: unused variable 'op' [-Wunused-variable]
+  FRESULT op = f_open(fptr, path, FA_CREATE_ALWAYS | FA_WRITE);
+          ^~
+../lib/File.cpp: In static member function 'static bool File::read(const char*, float**, int, int)':
+../lib/File.cpp:9:41: warning: 'fptr' is used uninitialized in this function [-Wuninitialized]
+  FRESULT op = f_open(fptr, path, FA_READ);
+                                         ^
+../lib/File.cpp:22:8: warning: 'br' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  f_read(fptr, (void*) buff, fptr->obj.objsize, br);
+  ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../lib/File.cpp: In static member function 'static bool File::write(const char*, float**, int, int)':
+../lib/File.cpp:54:61: warning: 'fptr' is used uninitialized in this function [-Wuninitialized]
+  FRESULT op = f_open(fptr, path, FA_CREATE_ALWAYS | FA_WRITE);
+                                                             ^
+'Finished building: ../lib/File.cpp'
+' '
+'Building file: ../lib/Math.cpp'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"lib/Math.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"lib/Math.d" -MT"lib/Math.o" -o "lib/Math.o" "../lib/Math.cpp"
+'Finished building: ../lib/Math.cpp'
+' '
+'Building file: ../lib/sdCard.c'
+'Invoking: ARM v7 g++ compiler'
+arm-none-eabi-g++ -Wall -O0 -g3 -c -fmessage-length=0 -MT"lib/sdCard.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hust_efi_1_bsp/ps7_cortexa9_0/include -MMD -MP -MF"lib/sdCard.d" -MT"lib/sdCard.o" -o "lib/sdCard.o" "../lib/sdCard.c"
+../lib/sdCard.c: In function 'int SD_Init()':
+../lib/sdCard.c:8:16: warning: ISO C++ forbids converting a string constant to 'TCHAR* {aka char*}' [-Wwrite-strings]
+  TCHAR *Path = "0:/";
+                ^~~~~
+../lib/sdCard.c: In function 'int SD_Eject()':
+../lib/sdCard.c:20:16: warning: ISO C++ forbids converting a string constant to 'TCHAR* {aka char*}' [-Wwrite-strings]
+  TCHAR *Path = "0:/";
+                ^~~~~
+'Finished building: ../lib/sdCard.c'
+' '
+'Building target: hust_efi_1.elf'
+'Invoking: ARM v7 g++ linker'
+arm-none-eabi-g++ -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -o "hust_efi_1.elf"  ./src/CKP.o ./src/CLT.o ./src/Communication.o ./src/EFI.o ./src/EGO.o ./src/Engine.o ./src/FuelInjectionControl.o ./src/IgnitionControl.o ./src/MAP.o ./src/MAT.o ./src/main.o  ./lib/Array.o ./lib/File.o ./lib/Math.o ./lib/sdCard.o   -Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,-lstdc++,--end-group -Wl,--start-group,-lxilffs,-lxil,-lgcc,-lc,--end-group
+g:/xilinx/sdk/2018.3/gnu/aarch32/nt/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/bin/ld.exe: cannot find -lxil
+g:/xilinx/sdk/2018.3/gnu/aarch32/nt/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/bin/ld.exe: cannot find -lfreertos
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:54: hust_efi_1.elf] Error 1
+
+07:40:07 Build Finished (took 17s.789ms)
+

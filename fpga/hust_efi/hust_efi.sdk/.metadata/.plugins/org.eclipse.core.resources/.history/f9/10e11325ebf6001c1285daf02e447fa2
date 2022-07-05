@@ -1,0 +1,63 @@
+#include "../include/EFI.hpp"
+
+EFI::EFI() {
+
+	MAPSensor.loadTable("../../data/sensors/MAP.txt");
+	MATSensor.loadTable("../../data/sensors/MAT.txt");
+	CLTSensor.loadTable("../../data/sensors/CLT.txt");
+	TPSSensor.loadTable("../../data/sensors/TPS.txt");
+	EGOSensor.loadTable("../../data/sensors/EGO.txt");
+};
+
+bool EFI::getCheckEngineLight() {
+	return checkEngineLight;
+}
+
+bool EFI::setCheckEngineLight(bool checkEngineLight) {
+	this->checkEngineLight = checkEngineLight;
+}
+
+float getBtdc() const {
+	return BTDC;
+}
+
+void setBTDC(float btdc) {
+	this->BTDC = btdc;
+}
+
+float getIgnitionTime() const {
+	return this->ignitionTime;
+}
+
+void setIgnitionTime(float ignitionTime) {
+	this->ignitionTime = ignitionTime;
+}
+
+float getInjectionTime() const {
+	return this->injectionTime;
+}
+
+void setInjectionTime(float injectionTime) {
+	this->injectionTime = injectionTime;
+}
+
+float getRPM() const {
+	return this->RPM;
+}
+
+void setRPM(float rpm) {
+	this->RPM = rpm;
+}
+
+void EFI::checkSensor() {
+	MAPSensor.check();
+	MATSensor.check();
+	CLTSensor.check();
+	TPSSensor.check();
+	EGOSensor.check();
+	CKPSensor.check();
+}
+
+void EFI::updateTable() {
+
+};

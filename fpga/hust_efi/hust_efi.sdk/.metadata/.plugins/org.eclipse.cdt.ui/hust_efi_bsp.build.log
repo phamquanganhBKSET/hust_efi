@@ -1,0 +1,139 @@
+20:17:02 **** Auto Build of project hust_efi_bsp ****
+make -k all 
+"Running Make include in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src"
+make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src"
+make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/ddrps_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/devcfg_v3_5/src"
+make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/dmaps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/dmaps_v2_4/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make include in ps7_cortexa9_0/libsrc/xilffs_v4_0/src"
+make -C ps7_cortexa9_0/libsrc/xilffs_v4_0/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Running Make libs in ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src"
+make -C ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling coresightps_dcc"
+xcoresightpsdcc.c:63:10: fatal error: xil_types.h: No such file or directory
+ #include <xil_types.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xcoresightpsdcc.o] Error 1
+make[1]: Target 'libs' not remade because of errors.
+make: *** [Makefile:30: ps7_cortexa9_0/libsrc/coresightps_dcc_v1_4/src/make.libs] Error 2
+"Running Make libs in ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src"
+make -C ps7_cortexa9_0/libsrc/cpu_cortexa9_v2_7/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling cpu_cortexa9"
+"Running Make libs in ps7_cortexa9_0/libsrc/ddrps_v1_0/src"
+make -C ps7_cortexa9_0/libsrc/ddrps_v1_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling ddrps"
+"Running Make libs in ps7_cortexa9_0/libsrc/devcfg_v3_5/src"
+make -C ps7_cortexa9_0/libsrc/devcfg_v3_5/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling devcfg"
+In file included from xdevcfg.h:166:0,
+                 from xdevcfg.c:88:
+xdevcfg_hw.h:63:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdevcfg.o] Error 1
+In file included from xdevcfg.h:166:0,
+                 from xdevcfg_sinit.c:51:
+xdevcfg_hw.h:63:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdevcfg_sinit.o] Error 1
+In file included from xdevcfg.h:166:0,
+                 from xdevcfg_selftest.c:52:
+xdevcfg_hw.h:63:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdevcfg_selftest.o] Error 1
+In file included from xdevcfg_hw.c:48:0:
+xdevcfg_hw.h:63:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdevcfg_hw.o] Error 1
+In file included from xdevcfg.h:166:0,
+                 from xdevcfg_intr.c:53:
+xdevcfg_hw.h:63:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdevcfg_intr.o] Error 1
+In file included from xdevcfg.h:166:0,
+                 from xdevcfg_g.c:51:
+xdevcfg_hw.h:63:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdevcfg_g.o] Error 1
+make[1]: Target 'libs' not remade because of errors.
+make: *** [Makefile:30: ps7_cortexa9_0/libsrc/devcfg_v3_5/src/make.libs] Error 2
+"Running Make libs in ps7_cortexa9_0/libsrc/dmaps_v2_4/src"
+make -C ps7_cortexa9_0/libsrc/dmaps_v2_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling dmaps"
+xdmaps.c:77:10: fatal error: xstatus.h: No such file or directory
+ #include "xstatus.h"
+          ^~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdmaps.o] Error 1
+xdmaps_sinit.c:50:10: fatal error: xstatus.h: No such file or directory
+ #include "xstatus.h"
+          ^~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdmaps_sinit.o] Error 1
+xdmaps_selftest.c:49:10: fatal error: xstatus.h: No such file or directory
+ #include "xstatus.h"
+          ^~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdmaps_selftest.o] Error 1
+xdmaps_g.c:50:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdmaps_g.o] Error 1
+In file included from xdmaps_hw.c:49:0:
+xdmaps_hw.h:62:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:25: xdmaps_hw.o] Error 1
+make[1]: Target 'libs' not remade because of errors.
+make: *** [Makefile:30: ps7_cortexa9_0/libsrc/dmaps_v2_4/src/make.libs] Error 2
+"Running Make libs in ps7_cortexa9_0/libsrc/xilffs_v4_0/src"
+make -C ps7_cortexa9_0/libsrc/xilffs_v4_0/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -g -Wall -Wextra"
+"Compiling XilFFs Library"
+In file included from diskio.c:92:0:
+../../../include/diskio.h:16:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:79: diskio.o] Error 1
+In file included from ffunicode.c:26:0:
+../../../include/ff.h:56:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:79: ffunicode.o] Error 1
+ff.c:57:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:79: ff.o] Error 1
+In file included from ffsystem.c:7:0:
+../../../include/ff.h:56:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:79: ffsystem.o] Error 1
+make[1]: Target 'libs' not remade because of errors.
+make: *** [Makefile:30: ps7_cortexa9_0/libsrc/xilffs_v4_0/src/make.libs] Error 2
+make: Target 'all' not remade because of errors.
+
+20:17:05 Build Finished (took 3s.203ms)
+

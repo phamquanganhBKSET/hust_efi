@@ -1,0 +1,23 @@
+#include "../include/MAT.hpp"
+
+union {
+	float f;
+	u32 u;
+} voltage;
+
+MAT::MAT() {
+	MATSSTable = Array::create(MATSS_ROWS, MATSS_COLS);
+	data = 0;
+}
+
+void MAT::check() {
+	//float voltage = input->read();
+	// Doc gia tri sensor o day
+	voltage.u = EFI_VIRTUAL_INPUT_mReadReg(VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG1_OFFSET);
+	this->data = Math::interpolation1d(this->MATSSTable, voltage.f, MATSS_COLS);
+	std::cout << "MAT sensor read, voltage = " << voltage.f << " -> MAT = " << this->data << std::endl;
+}
+
+float MAT::getData() {
+	return this->data;
+}

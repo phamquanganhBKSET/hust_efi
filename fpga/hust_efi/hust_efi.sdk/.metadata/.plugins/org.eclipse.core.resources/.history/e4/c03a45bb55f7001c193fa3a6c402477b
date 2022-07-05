@@ -1,0 +1,66 @@
+/***************************** Include Files *********************************/
+#include <iostream>
+#include "FreeRTOS.h"
+#include "task.h"
+#include "../include/GlobalDefines.hpp"
+#include "../include/EFI.hpp"
+#include "efi_virtual_input.h"
+#include "xparameters.h"
+#include "xgpio.h"
+#include "xil_printf.h"
+
+/************************** Constant Definitions *****************************/
+#define INPUT_REG_ADDR          0x41210000
+#define OUTPUT_REG_ADDR         0x41210000
+#define CRANK_COUNTER_ADDR      0x41220000
+#define VIRTUAL_INPUT_BASE_ADDR 0x43c00000 // Reg 0 for MAP
+										   // Reg 1 for MAT
+										   // Reg 2 for CLT
+										   // Reg 3 for EGO
+
+/************************** Variable Definitions *****************************/
+XGpio Gpio1; /* The Instance of the GPIO Driver for input_reg and output_reg */
+XGpio Gpio2; /* The Instance of the GPIO Driver for crank_counter */
+
+void vTaskInput(void*);
+void vTaskProcess(void*);
+
+using namespace std;
+
+int main()
+{
+	EFI* efi = new EFI();
+
+	int Status1;
+	int Status2;
+
+	Status1 = XGpio_Initialize(&Gpio1, XPAR_AXI_GPIO_1_DEVICE_ID);
+	if (Status1 != XST_SUCCESS) {
+		xil_printf("Gpio1 Initialization Failed\r\n");
+		return XST_FAILURE;
+	}
+	Status2 = XGpio_Initialize(&Gpio1, XPAR_AXI_GPIO_2_DEVICE_ID);
+	if (Status2 != XST_SUCCESS) {
+		xil_printf("Gpio2 Initialization Failed\r\n");
+		return XST_FAILURE;
+	}
+
+	XGpio_SetDataDirection(&Gpio1, 1, 0x00); // All output
+	XGpio_SetDataDirection(&Gpio1, 2, 0xFF); // All input
+	XGpio_SetDataDirection(&Gpio2, 1, 0xFF); // All input
+
+	xTaskCreate( vTaskInput, "Task Input", 1000, NULL, 1, NULL );
+	xTaskCreate( vTaskProcess, "Task Process", 1000, NULL, 1, NULL );
+
+	vTaskStartScheduler();
+
+	return 0;
+}
+
+void vTaskInput(void*) {
+
+}
+
+void vTaskProcess(void*) {
+
+}

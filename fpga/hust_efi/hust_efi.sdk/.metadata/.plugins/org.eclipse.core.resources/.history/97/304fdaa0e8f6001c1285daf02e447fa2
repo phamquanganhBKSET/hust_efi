@@ -1,0 +1,58 @@
+#include "../include/EFI.hpp"
+
+EFI::EFI() {
+	MAPSensor.loadTable("../../data/sensors/MAP.txt");
+	MATSensor.loadTable("../../data/sensors/MAT.txt");
+	CLTSensor.loadTable("../../data/sensors/CLT.txt");
+	TPSSensor.loadTable("../../data/sensors/TPS.txt");
+	EGOSensor.loadTable("../../data/sensors/EGO.txt");
+};
+
+bool EFI::getCheckEngineLight() {
+	return checkEngineLight;
+}
+
+bool EFI::setCheckEngineLight(bool checkEngineLight) {
+	this->checkEngineLight = checkEngineLight;
+}
+
+void EFI::turnOnFIC() {
+
+}
+
+void EFI::turnOffFIC() {
+
+}
+
+void EFI::turnOnIC() {
+
+}
+
+void EFI::turnOffIC() {
+
+}
+
+void EFI::crankTick() {
+
+}
+
+void EFI::allowInject() {
+
+}
+
+void EFI::allowIgnite() {
+
+}
+
+void EFI::checkSensor() {
+	MAPSensor.check();
+	MATSensor.check();
+	CLTSensor.check();
+	TPSSensor.check();
+	EGOSensor.check();
+	CKPSensor.check();
+}
+
+void EFI::updateTable() {
+
+};

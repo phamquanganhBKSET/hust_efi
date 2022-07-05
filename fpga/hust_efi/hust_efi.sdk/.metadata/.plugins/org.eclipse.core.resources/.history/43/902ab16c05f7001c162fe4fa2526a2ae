@@ -1,0 +1,18 @@
+#include <iostream>
+#include "../include/GlobalDefines.hpp"
+#include "../include/EFI.hpp"
+
+#define INPUT_REG_ADDR
+#define OUTPUT_REG_ADDR
+#define CRANK_COUNTER_ADDR
+
+using namespace std;
+
+int main()
+{
+	EFI* efi = new EFI();
+
+
+
+	return 0;
+}

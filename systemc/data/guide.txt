@@ -1,0 +1,34 @@
+1. VE Table:
++) First line: RPM (min 300 RPM, idle 600 RPM, maxx 5200 RPM)
++) Second line: MAP (kPa)
++) All lines below: Percent of cylinder air fill (%)
+
+2. AFR Table:
++) First line: RPM (min 300 RPM, idle 600 RPM, maxx 5200 RPM)
++) Second line: MAP (kPa)
++) All lines below: AFR
+
+3. Cold Advance Table:
++) First line: CLT (Celcius)
++) Second line: Cold advance offset
+
+4. Ignition Table:
++) First line: RPM (min 300 RPM, idle 600 RPM, maxx 5200 RPM)
++) Second line: MAP (kPa)
++) All lines below: Ignition timing
+
+5. Warm Up Table:
++) First line: CLT (Celcius)
++) Second line: WUE % (Warm up enrichment)
+
+6. Oxygen Loop Table:
++) First line: RPM
++) Second line: MAP (kPa)
++) All lines below: %
+
+7. Acceleration Table:
++) First line: Added (%)
++) Second line: TPSdot (%/s) 
+
+https://wiki.speeduino.com/en/configuration/Acceleration_Wizard
+https://motorsport-electronics.co.uk/onlinehelp/html/8194.html

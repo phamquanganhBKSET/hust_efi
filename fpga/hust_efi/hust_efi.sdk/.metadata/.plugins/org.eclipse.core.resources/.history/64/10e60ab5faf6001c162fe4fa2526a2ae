@@ -1,0 +1,95 @@
+#include "../include/EFI.hpp"
+
+EFI::EFI() {
+	checkEngineLight = false;
+	RPM = 0;
+	ignitionTime = 0;
+	injectionTime = 0;
+	BTDC = 0;
+
+	bool empty = FIC.loadTable("../../data/backup/");
+	if (!empty)
+	{
+		FIC.loadTable("data/initial/");
+	}
+	IC.loadTable("data/initial/");
+
+	MAPSensor.loadTable("data/sensors/MAP.txt");
+	MATSensor.loadTable("data/sensors/MAT.txt");
+	CLTSensor.loadTable("data/sensors/CLT.txt");
+	TPSSensor.loadTable("data/sensors/TPS.txt");
+	EGOSensor.loadTable("data/sensors/EGO.txt");
+};
+
+bool EFI::getCheckEngineLight() {
+	return checkEngineLight;
+}
+
+bool EFI::setCheckEngineLight(bool checkEngineLight) {
+	this->checkEngineLight = checkEngineLight;
+}
+
+float EFI::getBTDC() {
+	return BTDC;
+}
+
+void EFI::setBTDC(float btdc) {
+	this->BTDC = btdc;
+}
+
+float EFI::getIgnitionTime() {
+	return this->ignitionTime;
+}
+
+void EFI::setIgnitionTime(float ignitionTime) {
+	this->ignitionTime = ignitionTime;
+}
+
+float EFI::getInjectionTime() {
+	return this->injectionTime;
+}
+
+void EFI::setInjectionTime(float injectionTime) {
+	this->injectionTime = injectionTime;
+}
+
+float EFI::getRPM() {
+	return this->RPM;
+}
+
+void EFI::setRPM(float rpm) {
+	this->RPM = rpm;
+}
+
+float calculateRPM(uint32_t crank_cycle_counter) // crank_cycle_counter is from output_reg in RTL
+{
+	return (crank_cycle_counter * (1/CLK_FREQ))
+}
+
+float calculateBTDC(uint8_t crank_counter) // crank_counter is from hust_efi
+{
+
+}
+
+float calculateIgnitionTime(float CLT, float MAP, float RPM) {
+
+}
+
+float calculateInjectionTime(float CLT, float EGO, float MAP, float RPM) {
+
+}
+
+void EFI::checkSensor() {
+	MAPSensor.check();
+	MATSensor.check();
+	CLTSensor.check();
+	TPSSensor.check();
+	EGOSensor.check();
+	CKPSensor.check();
+}
+
+void EFI::updateTable() {
+
+};
+
+

@@ -1,0 +1,19 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sun Jul  3 17:48:18 2022
+# Process ID: 2372
+# Current directory: C:/Users/HH/Documents/Embedded_system/hust_efi/fpga/hust_efi/hust_efi.runs/design_1_axi_gpio_8_0_synth_1
+# Command line: vivado.exe -log design_1_axi_gpio_8_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_axi_gpio_8_0.tcl
+# Log file: C:/Users/HH/Documents/Embedded_system/hust_efi/fpga/hust_efi/hust_efi.runs/design_1_axi_gpio_8_0_synth_1/design_1_axi_gpio_8_0.vds
+# Journal file: C:/Users/HH/Documents/Embedded_system/hust_efi/fpga/hust_efi/hust_efi.runs/design_1_axi_gpio_8_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source design_1_axi_gpio_8_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/HH/Documents/Embedded_system/hust_efi/fpga/ip_repo/efi_virtual_input_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/HH/Documents/Embedded_system/hust_efi/fpga/ip_repo/efi_axi_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/HH/Documents/Embedded_system/hust_efi/fpga/ip_repo/crank_axi_1.0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'G:/Xilinx/Vivado/2018.3/data/ip'.
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP design_1_axi_gpio_8_0, cache-ID = a04b1f3bc3d347e1.
+INFO: [Common 17-206] Exiting Vivado at Sun Jul  3 17:48:27 2022...

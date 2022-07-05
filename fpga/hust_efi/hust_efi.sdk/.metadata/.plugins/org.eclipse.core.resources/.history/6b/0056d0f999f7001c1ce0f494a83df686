@@ -1,0 +1,27 @@
+#include "../include/EGO.hpp"
+
+union {
+	float f;
+	u32 u;
+} voltage;
+
+EGO::EGO() {
+	EGOSSTable = Array::create(EGOSS_ROWS, EGOSS_COLS);
+	data = 0;
+}
+
+void EGO::loadTable(char path[]) {
+    File::read(path, this->EGOSSTable, EGOSS_ROWS, EGOSS_COLS);
+}
+
+void EGO::check() {
+	//float voltage = input->read();
+	// Doc gia tri sensor o day
+	voltage.u = EFI_VIRTUAL_INPUT_mReadReg(VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG3_OFFSET);
+	this->data = Math::interpolation1d(this->EGOSSTable, voltage.f, EGOSS_COLS);
+	std::cout << "EGO sensor read, voltage = " << voltage.f << " -> AFR = " << this->data << std::endl;
+}
+
+float EGO::getData() {
+	return this->data;
+}

@@ -1,0 +1,28 @@
+/***************************** Include Files *********************************/
+#include <iostream>
+#include "../include/GlobalDefines.hpp"
+#include "../include/EFI.hpp"
+#include "xparameters.h"
+#include "xgpio.h"
+#include "xil_printf.h"
+
+/************************** Constant Definitions *****************************/
+#define INPUT_REG_ADDR
+#define OUTPUT_REG_ADDR
+#define CRANK_COUNTER_ADDR
+
+/************************** Variable Definitions *****************************/
+XGpio Gpio0; /* The Instance of the GPIO Driver for input_reg */
+XGpio Gpio1; /* The Instance of the GPIO Driver for output_reg */
+XGpio Gpio2; /* The Instance of the GPIO Driver for crank_counter */
+
+using namespace std;
+
+int main()
+{
+	EFI* efi = new EFI();
+
+
+
+	return 0;
+}

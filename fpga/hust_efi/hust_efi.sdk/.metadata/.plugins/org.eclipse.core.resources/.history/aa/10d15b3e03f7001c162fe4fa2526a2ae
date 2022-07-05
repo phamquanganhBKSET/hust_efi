@@ -1,0 +1,10 @@
+#include <iostream>
+#include "../include/GlobalDefines.hpp"
+#include "../include/EFI.hpp"
+
+using namespace std;
+
+int main()
+{
+	return 0;
+}

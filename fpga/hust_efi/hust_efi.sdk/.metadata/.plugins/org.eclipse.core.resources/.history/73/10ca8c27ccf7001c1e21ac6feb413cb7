@@ -1,0 +1,169 @@
+/***************************** Include Files *********************************/
+#include <iostream>
+#include <random>
+#include "FreeRTOS.h"
+#include "task.h"
+#include "../include/GlobalDefines.hpp"
+#include "../include/EFI.hpp"
+#include "../lib/sdCard.h"
+#include "efi_virtual_input.h"
+#include "xparameters.h"
+#include "xgpio.h"
+#include "xil_printf.h"
+
+/************************** Variable Definitions *****************************/
+XGpio Gpio1; /* The Instance of the GPIO Driver for input_reg and output_reg */
+XGpio Gpio2; /* The Instance of the GPIO Driver for crank_counter */
+
+void vTaskInput(void*);
+void vTaskProcess(void* parameter);
+
+using namespace std;
+
+union {
+	float f;
+	u32 u;
+} number;
+
+int main()
+{
+	int status = SD_Init();
+	if (status != XST_SUCCESS) {
+		cout << "SD card init failed!";
+		return 0;
+	}
+	cout << "SD card init successfully!" << endl;
+
+	cout << "Initializing EFI...\n";
+	EFI* efi = new EFI();
+
+	int Status1;
+	int Status2;
+
+	cout << "Initializing GPIO1...\n";
+	Status1 = XGpio_Initialize(&Gpio1, XPAR_AXI_GPIO_1_DEVICE_ID);
+	if (Status1 != XST_SUCCESS) {
+		cout << "Gpio1 Initialization Failed\r\n";
+		return XST_FAILURE;
+	}
+	cout << "Initializing GPIO2...\n";
+	Status2 = XGpio_Initialize(&Gpio2, XPAR_AXI_GPIO_2_DEVICE_ID);
+	if (Status2 != XST_SUCCESS) {
+		cout << "Gpio2 Initialization Failed\r\n";
+		return XST_FAILURE;
+	}
+	cout << "\nDone initializing GPIO\n";
+
+//	cout << "\nSetting data direction for GPIO1...";
+//	XGpio_SetDataDirection(&Gpio1, 1, 0x00); // All output
+	cout << "\nChannel 1 of Gpio1 is " <<  XGpio_GetDataDirection(&Gpio1, 1);
+//	XGpio_SetDataDirection(&Gpio1, 2, 0xFF); // All input
+	cout << "\nChannel 2 of Gpio1 is " <<  XGpio_GetDataDirection(&Gpio1, 2);
+//	cout << "\nSetting data direction for GPIO2...";
+//	XGpio_SetDataDirection(&Gpio2, 1, 0xFF); // All input
+	cout << "\nChannel 1 of Gpio2 is " <<  XGpio_GetDataDirection(&Gpio2, 1);
+//
+//	xTaskCreate( vTaskInput, "Task Input", 2048, NULL, 1, NULL );
+//	xTaskCreate( vTaskProcess, "Task Process", 2048, (void*)efi, 1, NULL );
+//
+//	vTaskStartScheduler();
+
+	volatile unsigned int *virtual_input = (volatile unsigned int *) 0x43c00000;
+	cout << "\n******************************\n\r";
+			cout << "* User Peripheral Write Test\n\r";
+			cout << "******************************\n\n\r";
+
+			/*
+			* Write to user logic slave module register(s) and read back
+			*/
+			cout << "User logic slave module test...\n\r";
+
+			number.f = MAP_VFROM + static_cast<float>(rand()) * static_cast<float>(MAP_VTO - MAP_VFROM) / RAND_MAX;
+			cout << "MAP = " << number.f << "\n\r";
+			virtual_input[0] = number.u;
+	//		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG0_OFFSET, number.u);
+
+			number.f = MAT_VFROM + static_cast<float>(rand()) * static_cast<float>(MAT_VTO - MAT_VFROM) / RAND_MAX;
+			cout << "MAT = " << number.f << "\n\r";
+			virtual_input[1] = number.u;
+	//		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG1_OFFSET, number.u);
+
+			number.f = CLT_VFROM + static_cast<float>(rand()) * static_cast<float>(CLT_VTO - CLT_VFROM) / RAND_MAX;
+			cout << "CLT = " << number.f << "\n\r";
+			virtual_input[2] = number.u;
+	//		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG2_OFFSET, number.u);
+
+			number.f = EGO_VFROM + static_cast<float>(rand()) * static_cast<float>(EGO_VTO - EGO_VFROM) / RAND_MAX;
+			cout << "EGO = " << number.f << "\n\r";
+			virtual_input[3] = number.u;
+	//		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG3_OFFSET, number.u);
+
+			cout << "******************************\n\r";
+					cout << "* User Peripheral Read Test\n\r";
+					cout << "******************************\n\n\r";
+					efi->checkSensor();
+
+	return 0;
+}
+
+void vTaskInput(void*) {
+	cout << "\nCreate TaskInput successfully!\n";
+	volatile unsigned int *virtual_input = (volatile unsigned int *) 0x43c00000;
+	int i = 0;
+	const TickType_t xDelay = 3 / portTICK_PERIOD_MS;
+	while(1) {
+		cout << "\n******************************\n\r";
+		cout << "* User Peripheral Write Test\n\r";
+		cout << "******************************\n\n\r";
+
+		/*
+		* Write to user logic slave module register(s) and read back
+		*/
+		cout << "User logic slave module test...\n\r";
+
+		number.f = MAP_VFROM + static_cast<float>(rand()) * static_cast<float>(MAP_VTO - MAP_VFROM) / RAND_MAX;
+		cout << "MAP = " << number.f << "\n\r";
+		virtual_input[0] = number.u;
+//		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG0_OFFSET, number.u);
+
+		number.f = MAT_VFROM + static_cast<float>(rand()) * static_cast<float>(MAT_VTO - MAT_VFROM) / RAND_MAX;
+		cout << "MAT = " << number.f << "\n\r";
+		virtual_input[1] = number.u;
+//		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG1_OFFSET, number.u);
+
+		number.f = CLT_VFROM + static_cast<float>(rand()) * static_cast<float>(CLT_VTO - CLT_VFROM) / RAND_MAX;
+		cout << "CLT = " << number.f << "\n\r";
+		virtual_input[2] = number.u;
+//		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG2_OFFSET, number.u);
+
+		number.f = EGO_VFROM + static_cast<float>(rand()) * static_cast<float>(EGO_VTO - EGO_VFROM) / RAND_MAX;
+		cout << "EGO = " << number.f << "\n\r";
+		virtual_input[3] = number.u;
+//		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG3_OFFSET, number.u);
+
+		if(i++ > 20) {
+			cout << endl << "Dung";
+			break;
+		}
+
+		vTaskDelay( xDelay );
+	}
+}
+
+void vTaskProcess(void* parameter) {
+	cout << "\nCreate TaskProcess successfully!\n";
+	EFI* efi = (EFI*)parameter;
+	int i = 0;
+	const TickType_t xDelay = 3 / portTICK_PERIOD_MS;
+	while(1) {
+		vTaskDelay( xDelay );
+		cout << "******************************\n\r";
+		cout << "* User Peripheral Read Test\n\r";
+		cout << "******************************\n\n\r";
+		efi->checkSensor();
+		if(i++ > 20) {
+			cout << endl << "Dung";
+			break;
+		}
+	}
+}

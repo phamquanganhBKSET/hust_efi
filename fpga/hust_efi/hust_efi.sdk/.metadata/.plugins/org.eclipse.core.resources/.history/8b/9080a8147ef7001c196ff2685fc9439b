@@ -1,0 +1,86 @@
+/***************************** Include Files *********************************/
+#include <iostream>
+#include <random>
+#include "FreeRTOS.h"
+#include "task.h"
+#include "../include/GlobalDefines.hpp"
+#include "../include/EFI.hpp"
+#include "efi_virtual_input.h"
+#include "xparameters.h"
+#include "xgpio.h"
+#include "xil_printf.h"
+
+/************************** Variable Definitions *****************************/
+XGpio Gpio1; /* The Instance of the GPIO Driver for input_reg and output_reg */
+XGpio Gpio2; /* The Instance of the GPIO Driver for crank_counter */
+
+void vTaskInput(void*);
+void vTaskProcess(void*);
+
+using namespace std;
+
+int main()
+{
+	EFI* efi = new EFI();
+
+	int Status1;
+	int Status2;
+
+	Status1 = XGpio_Initialize(&Gpio1, XPAR_AXI_GPIO_1_DEVICE_ID);
+	if (Status1 != XST_SUCCESS) {
+		xil_printf("Gpio1 Initialization Failed\r\n");
+		return XST_FAILURE;
+	}
+	Status2 = XGpio_Initialize(&Gpio1, XPAR_AXI_GPIO_2_DEVICE_ID);
+	if (Status2 != XST_SUCCESS) {
+		xil_printf("Gpio2 Initialization Failed\r\n");
+		return XST_FAILURE;
+	}
+
+	XGpio_SetDataDirection(&Gpio1, 1, 0x00); // All output
+	XGpio_SetDataDirection(&Gpio1, 2, 0xFF); // All input
+	XGpio_SetDataDirection(&Gpio2, 1, 0xFF); // All input
+
+	xTaskCreate( vTaskInput, "Task Input", 1000, NULL, 1, NULL );
+	xTaskCreate( vTaskProcess, "Task Process", 1000, NULL, 1, NULL );
+
+	vTaskStartScheduler();
+
+	return 0;
+}
+
+void vTaskInput(void*) {
+	const TickType_t xDelay = 3 / portTICK_PERIOD_MS;
+	while(1) {
+		xil_printf("******************************\n\r");
+		xil_printf("* User Peripheral Self Test\n\r");
+		xil_printf("******************************\n\n\r");
+
+		/*
+		* Write to user logic slave module register(s) and read back
+		*/
+		xil_printf("User logic slave module test...\n\r");
+
+		float map = MAP_VFROM + static_cast<float>(rand()) * static_cast<float>(MAP_VTO - MAP_VFROM) / RAND_MAX;
+		xil_printf("MAP = %f\n\r", map);
+		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG0_OFFSET, map);
+
+		float mat = MAT_VFROM + static_cast<float>(rand()) * static_cast<float>(MAT_VTO - MAT_VFROM) / RAND_MAX;
+		xil_printf("MAT = %f\n\r", mat);
+		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG1_OFFSET, mat);
+
+		float clt = CLT_VFROM + static_cast<float>(rand()) * static_cast<float>(CLT_VTO - CLT_VFROM) / RAND_MAX;
+		xil_printf("CLT = %f\n\r", clt);
+		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG2_OFFSET, clt);
+
+		float ego = EGO_VFROM + static_cast<float>(rand()) * static_cast<float>(EGO_VTO - EGO_VFROM) / RAND_MAX;
+		xil_printf("EGO = %f\n\r", ego);
+		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG3_OFFSET, ego);
+
+		vTaskDelay( xDelay );
+	}
+}
+
+void vTaskProcess(void*) {
+
+}

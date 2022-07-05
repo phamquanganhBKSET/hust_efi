@@ -1,0 +1,578 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Mon Jul  4 19:14:42 2022
+# Process ID: 11400
+# Current directory: C:/Users/HH/Documents/Embedded_system/hust_efi/fpga/hust_efi/hust_efi.runs/design_1_hust_efi_0_0_synth_1
+# Command line: vivado.exe -log design_1_hust_efi_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_hust_efi_0_0.tcl
+# Log file: C:/Users/HH/Documents/Embedded_system/hust_efi/fpga/hust_efi/hust_efi.runs/design_1_hust_efi_0_0_synth_1/design_1_hust_efi_0_0.vds
+# Journal file: C:/Users/HH/Documents/Embedded_system/hust_efi/fpga/hust_efi/hust_efi.runs/design_1_hust_efi_0_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source design_1_hust_efi_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 341.336 ; gain = 101.977
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/HH/Documents/Embedded_system/hust_efi/fpga/ip_repo/efi_virtual_input_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/HH/Documents/Embedded_system/hust_efi/fpga/ip_repo/efi_axi_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/HH/Documents/Embedded_system/hust_efi/fpga/ip_repo/crank_axi_1.0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'G:/Xilinx/Vivado/2018.3/data/ip'.
+update_ip_catalog: Time (s): cpu = 00:00:08 ; elapsed = 00:00:11 . Memory (MB): peak = 372.355 ; gain = 31.020
+Command: synth_design -top design_1_hust_efi_0_0 -part xc7z010clg400-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 7792 
+WARNING: [Synth 8-2369] multiple packed dimensions are not allowed in this mode of verilog [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/hust_efi.v:33]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 501.777 ; gain = 116.430
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_hust_efi_0_0' [c:/Users/HH/Documents/Embedded_system/hust_efi/fpga/hust_efi/hust_efi.srcs/sources_1/bd/design_1/ip/design_1_hust_efi_0_0/synth/design_1_hust_efi_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'hust_efi' [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/hust_efi.v:3]
+	Parameter CYLINDERS bound to: 3'b100 
+	Parameter NUM_TEETH bound to: 6'b111011 
+	Parameter HALF_NUM_TEETH bound to: 29 - type: integer 
+	Parameter NUM_LOST_TEETH bound to: 6'b000001 
+	Parameter CLK_FREQ bound to: 50000000 - type: integer 
+	Parameter CYCLE_COUNTER_WIDTH bound to: 18 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'ignition_control' [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/ignition_control.v:3]
+	Parameter CYLINDERS bound to: 3'b100 
+	Parameter IDLE bound to: 3'b000 
+	Parameter START bound to: 3'b001 
+	Parameter CALCULATE bound to: 3'b010 
+	Parameter WAITIGNITE bound to: 3'b011 
+	Parameter IGNITE bound to: 3'b100 
+	Parameter WAITINTAKE bound to: 3'b101 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/ignition_control.v:126]
+INFO: [Synth 8-6155] done synthesizing module 'ignition_control' (1#1) [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/ignition_control.v:3]
+INFO: [Synth 8-6157] synthesizing module 'fuel_injection_control' [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/fuel_injection_control.v:3]
+	Parameter IDLE bound to: 3'b000 
+	Parameter START bound to: 3'b001 
+	Parameter CALCULATE bound to: 3'b010 
+	Parameter WAITINJECT bound to: 3'b011 
+	Parameter INJECT bound to: 3'b100 
+	Parameter WAITUPDATE bound to: 3'b101 
+	Parameter UPDATE bound to: 3'b110 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/fuel_injection_control.v:147]
+INFO: [Synth 8-6155] done synthesizing module 'fuel_injection_control' (2#1) [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/fuel_injection_control.v:3]
+INFO: [Synth 8-6157] synthesizing module 'crank_position_control' [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/crank_position_control.v:3]
+	Parameter NUM_TEETH bound to: 6'b111011 
+	Parameter HALF_NUM_TEETH bound to: 6'b011101 
+	Parameter NUM_LOST_TEETH bound to: 6'b000001 
+	Parameter CLK_FREQ bound to: 50000000 - type: integer 
+	Parameter CYCLE_COUNTER_WIDTH bound to: 18 - type: integer 
+	Parameter IDLE bound to: 3'b000 
+	Parameter START bound to: 3'b001 
+	Parameter RESETTDC bound to: 3'b010 
+	Parameter RESETBDC bound to: 3'b011 
+	Parameter UPDATE bound to: 3'b100 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/crank_position_control.v:195]
+INFO: [Synth 8-6155] done synthesizing module 'crank_position_control' (3#1) [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/crank_position_control.v:3]
+INFO: [Synth 8-6157] synthesizing module 'stroke_transition' [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition.v:3]
+	Parameter CYLINDERS bound to: 3'b100 
+INFO: [Synth 8-6157] synthesizing module 'stroke_transition_00' [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_00.v:3]
+	Parameter IDLE bound to: 3'b000 
+	Parameter START bound to: 3'b001 
+	Parameter INTAKE bound to: 3'b010 
+	Parameter COMPRESSION bound to: 3'b011 
+	Parameter COMBUSTION bound to: 3'b100 
+	Parameter EXHAUST bound to: 3'b101 
+WARNING: [Synth 8-567] referenced signal 'ckp' should be on the sensitivity list [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_00.v:53]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_00.v:146]
+WARNING: [Synth 8-567] referenced signal 'ckp' should be on the sensitivity list [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_00.v:134]
+INFO: [Synth 8-6155] done synthesizing module 'stroke_transition_00' (4#1) [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_00.v:3]
+INFO: [Synth 8-6157] synthesizing module 'stroke_transition_11' [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_11.v:3]
+	Parameter IDLE bound to: 3'b000 
+	Parameter START bound to: 3'b001 
+	Parameter INTAKE bound to: 3'b010 
+	Parameter COMPRESSION bound to: 3'b011 
+	Parameter COMBUSTION bound to: 3'b100 
+	Parameter EXHAUST bound to: 3'b101 
+WARNING: [Synth 8-567] referenced signal 'ckp' should be on the sensitivity list [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_11.v:53]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_11.v:146]
+WARNING: [Synth 8-567] referenced signal 'ckp' should be on the sensitivity list [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_11.v:134]
+INFO: [Synth 8-6155] done synthesizing module 'stroke_transition_11' (5#1) [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_11.v:3]
+INFO: [Synth 8-6157] synthesizing module 'stroke_transition_01' [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_01.v:3]
+	Parameter IDLE bound to: 3'b000 
+	Parameter START bound to: 3'b001 
+	Parameter INTAKE bound to: 3'b010 
+	Parameter COMPRESSION bound to: 3'b011 
+	Parameter COMBUSTION bound to: 3'b100 
+	Parameter EXHAUST bound to: 3'b101 
+WARNING: [Synth 8-567] referenced signal 'ckp' should be on the sensitivity list [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_01.v:53]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_01.v:146]
+WARNING: [Synth 8-567] referenced signal 'ckp' should be on the sensitivity list [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_01.v:134]
+INFO: [Synth 8-6155] done synthesizing module 'stroke_transition_01' (6#1) [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_01.v:3]
+INFO: [Synth 8-6157] synthesizing module 'stroke_transition_10' [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_10.v:3]
+	Parameter IDLE bound to: 3'b000 
+	Parameter START bound to: 3'b001 
+	Parameter INTAKE bound to: 3'b010 
+	Parameter COMPRESSION bound to: 3'b011 
+	Parameter COMBUSTION bound to: 3'b100 
+	Parameter EXHAUST bound to: 3'b101 
+WARNING: [Synth 8-567] referenced signal 'ckp' should be on the sensitivity list [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_10.v:53]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_10.v:146]
+WARNING: [Synth 8-567] referenced signal 'ckp' should be on the sensitivity list [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_10.v:134]
+INFO: [Synth 8-6155] done synthesizing module 'stroke_transition_10' (7#1) [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition_10.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'stroke_transition' (8#1) [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/stroke_transition.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'hust_efi' (9#1) [C:/Users/HH/Documents/Embedded_system/hust_efi/hdl/hust_efi.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_hust_efi_0_0' (10#1) [c:/Users/HH/Documents/Embedded_system/hust_efi/fpga/hust_efi/hust_efi.srcs/sources_1/bd/design_1/ip/design_1_hust_efi_0_0/synth/design_1_hust_efi_0_0.v:58]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 538.188 ; gain = 152.840
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 538.188 ; gain = 152.840
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 538.188 ; gain = 152.840
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 866.805 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 866.805 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.411 . Memory (MB): peak = 868.613 ; gain = 1.809
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:35 ; elapsed = 00:00:53 . Memory (MB): peak = 868.613 ; gain = 483.266
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:35 ; elapsed = 00:00:54 . Memory (MB): peak = 868.613 ; gain = 483.266
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:54 . Memory (MB): peak = 868.613 ; gain = 483.266
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'crank_position_control'
+INFO: [Synth 8-5546] ROM "reset_crank" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'stroke_transition_00'
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'stroke_transition_11'
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'stroke_transition_01'
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'stroke_transition_10'
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'ignition_control'
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'fuel_injection_control'
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                   START |                              001 |                              001
+                RESETTDC |                              010 |                              010
+                RESETBDC |                              011 |                              011
+                  UPDATE |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'crank_position_control'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                   START |                              001 |                              001
+                 EXHAUST |                              010 |                              101
+                  INTAKE |                              011 |                              010
+             COMPRESSION |                              100 |                              011
+              COMBUSTION |                              101 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'stroke_transition_00'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                   START |                              001 |                              001
+                  INTAKE |                              010 |                              010
+             COMPRESSION |                              011 |                              011
+              COMBUSTION |                              100 |                              100
+                 EXHAUST |                              101 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'stroke_transition_11'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                   START |                              001 |                              001
+              COMBUSTION |                              010 |                              100
+                 EXHAUST |                              011 |                              101
+                  INTAKE |                              100 |                              010
+             COMPRESSION |                              101 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'stroke_transition_01'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                   START |                              001 |                              001
+             COMPRESSION |                              010 |                              011
+              COMBUSTION |                              011 |                              100
+                 EXHAUST |                              100 |                              101
+                  INTAKE |                              101 |                              010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'stroke_transition_10'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                   START |                              001 |                              001
+               CALCULATE |                              010 |                              010
+              WAITIGNITE |                              011 |                              011
+                  IGNITE |                              100 |                              100
+              WAITINTAKE |                              101 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'ignition_control'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                   START |                              001 |                              001
+               CALCULATE |                              010 |                              010
+              WAITINJECT |                              011 |                              011
+                  INJECT |                              100 |                              100
+              WAITUPDATE |                              101 |                              101
+                  UPDATE |                              110 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'fuel_injection_control'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:55 . Memory (MB): peak = 868.613 ; gain = 483.266
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 1     
++---Registers : 
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 14    
++---Muxes : 
+	   4 Input      6 Bit        Muxes := 1     
+	  10 Input      3 Bit        Muxes := 1     
+	  16 Input      3 Bit        Muxes := 4     
+	  12 Input      3 Bit        Muxes := 4     
+	  14 Input      3 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 6     
+	   4 Input      2 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 6     
+	   6 Input      2 Bit        Muxes := 4     
+	   5 Input      1 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 2     
+	   6 Input      1 Bit        Muxes := 16    
+	   7 Input      1 Bit        Muxes := 8     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module crank_position_control 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 1     
++---Registers : 
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   4 Input      6 Bit        Muxes := 1     
+	  10 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   5 Input      2 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 2     
+Module stroke_transition_00 
+Detailed RTL Component Info : 
++---Muxes : 
+	  16 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   3 Input      2 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 3     
+Module stroke_transition_11 
+Detailed RTL Component Info : 
++---Muxes : 
+	  16 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 3     
+Module stroke_transition_01 
+Detailed RTL Component Info : 
++---Muxes : 
+	  16 Input      3 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 3     
+Module stroke_transition_10 
+Detailed RTL Component Info : 
++---Muxes : 
+	  16 Input      3 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 3     
+Module ignition_control 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
++---Muxes : 
+	  12 Input      3 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 1     
+Module fuel_injection_control 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
++---Muxes : 
+	  14 Input      3 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-3886] merging instance 'inst/genblk1[0].fic/update_table_reg' (FDC) to 'inst/genblk1[0].ic/cal_ignition_reg'
+INFO: [Synth 8-3886] merging instance 'inst/genblk1[1].fic/update_table_reg' (FDC) to 'inst/genblk1[1].ic/cal_ignition_reg'
+INFO: [Synth 8-3886] merging instance 'inst/genblk1[2].fic/update_table_reg' (FDC) to 'inst/genblk1[2].ic/cal_ignition_reg'
+INFO: [Synth 8-3886] merging instance 'inst/genblk1[3].fic/update_table_reg' (FDC) to 'inst/genblk1[3].ic/cal_ignition_reg'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:01:01 . Memory (MB): peak = 868.613 ; gain = 483.266
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:09 ; elapsed = 00:01:30 . Memory (MB): peak = 872.168 ; gain = 486.820
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:10 ; elapsed = 00:01:30 . Memory (MB): peak = 872.320 ; gain = 486.973
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:10 ; elapsed = 00:01:30 . Memory (MB): peak = 884.289 ; gain = 498.941
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:13 ; elapsed = 00:01:34 . Memory (MB): peak = 884.289 ; gain = 498.941
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:13 ; elapsed = 00:01:34 . Memory (MB): peak = 884.289 ; gain = 498.941
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:13 ; elapsed = 00:01:34 . Memory (MB): peak = 884.289 ; gain = 498.941
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:13 ; elapsed = 00:01:34 . Memory (MB): peak = 884.289 ; gain = 498.941
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:13 ; elapsed = 00:01:34 . Memory (MB): peak = 884.289 ; gain = 498.941
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:13 ; elapsed = 00:01:34 . Memory (MB): peak = 884.289 ; gain = 498.941
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |     5|
+|2     |LUT1   |     1|
+|3     |LUT2   |    27|
+|4     |LUT3   |    10|
+|5     |LUT4   |    19|
+|6     |LUT5   |    39|
+|7     |LUT6   |    52|
+|8     |FDCE   |    73|
++------+-------+------+
+
+Report Instance Areas: 
++------+--------------------------------+-------------------------+------+
+|      |Instance                        |Module                   |Cells |
++------+--------------------------------+-------------------------+------+
+|1     |top                             |                         |   226|
+|2     |  inst                          |hust_efi                 |   226|
+|3     |    crank_position_control_inst |crank_position_control   |    92|
+|4     |    \genblk1[0].fic             |fuel_injection_control   |     8|
+|5     |    \genblk1[0].ic              |ignition_control         |     7|
+|6     |    \genblk1[1].fic             |fuel_injection_control_0 |     9|
+|7     |    \genblk1[1].ic              |ignition_control_1       |     7|
+|8     |    \genblk1[2].fic             |fuel_injection_control_2 |     8|
+|9     |    \genblk1[2].ic              |ignition_control_3       |     7|
+|10    |    \genblk1[3].fic             |fuel_injection_control_4 |     9|
+|11    |    \genblk1[3].ic              |ignition_control_5       |     8|
+|12    |    stroke_transition_inst      |stroke_transition        |    71|
+|13    |      \genblk1_2.stc00          |stroke_transition_00     |    19|
+|14    |      \genblk1_2.stc01          |stroke_transition_01     |    18|
+|15    |      \genblk1_2.stc10          |stroke_transition_10     |    15|
+|16    |      \genblk1_2.stc11          |stroke_transition_11     |    19|
++------+--------------------------------+-------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:13 ; elapsed = 00:01:34 . Memory (MB): peak = 884.289 ; gain = 498.941
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:47 ; elapsed = 00:01:04 . Memory (MB): peak = 884.289 ; gain = 168.516
+Synthesis Optimization Complete : Time (s): cpu = 00:01:14 ; elapsed = 00:01:34 . Memory (MB): peak = 884.289 ; gain = 498.941
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 891.758 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+90 Infos, 10 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:19 ; elapsed = 00:01:41 . Memory (MB): peak = 891.758 ; gain = 519.098
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 891.758 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/HH/Documents/Embedded_system/hust_efi/fpga/hust_efi/hust_efi.runs/design_1_hust_efi_0_0_synth_1/design_1_hust_efi_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1174] Renamed 15 cell refs.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 891.758 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/HH/Documents/Embedded_system/hust_efi/fpga/hust_efi/hust_efi.runs/design_1_hust_efi_0_0_synth_1/design_1_hust_efi_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_hust_efi_0_0_utilization_synth.rpt -pb design_1_hust_efi_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Jul  4 19:17:14 2022...

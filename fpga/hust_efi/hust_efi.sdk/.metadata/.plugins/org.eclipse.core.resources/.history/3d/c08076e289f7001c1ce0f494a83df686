@@ -1,0 +1,117 @@
+/***************************** Include Files *********************************/
+#include <iostream>
+#include <random>
+#include "FreeRTOS.h"
+#include "task.h"
+#include "../include/GlobalDefines.hpp"
+#include "../include/EFI.hpp"
+#include "efi_virtual_input.h"
+#include "xparameters.h"
+#include "xgpio.h"
+#include "xil_printf.h"
+
+/************************** Variable Definitions *****************************/
+XGpio Gpio1; /* The Instance of the GPIO Driver for input_reg and output_reg */
+XGpio Gpio2; /* The Instance of the GPIO Driver for crank_counter */
+
+void vTaskInput(void*);
+void vTaskProcess(void* parameter);
+
+using namespace std;
+
+int main()
+{
+	int status = SD_Init();
+		if (status != XST_SUCCESS) {
+			cout << "\nSD card init failed!";
+			return 0;
+		}
+	cout << "\nSuccess roi day nha" << endl;
+
+	cout << "Initializing EFI...\n";
+	EFI* efi = new EFI();
+
+	int Status1;
+	int Status2;
+
+	cout << "Initialize GPIO1...\n";
+	Status1 = XGpio_Initialize(&Gpio1, XPAR_AXI_GPIO_1_DEVICE_ID);
+	if (Status1 != XST_SUCCESS) {
+		cout << "Gpio1 Initialization Failed\r\n";
+		return XST_FAILURE;
+	}
+	cout << "Initialize GPIO1...\n";
+	Status2 = XGpio_Initialize(&Gpio1, XPAR_AXI_GPIO_2_DEVICE_ID);
+	if (Status2 != XST_SUCCESS) {
+		cout << "Gpio2 Initialization Failed\r\n";
+		return XST_FAILURE;
+	}
+
+	XGpio_SetDataDirection(&Gpio1, 1, 0x00); // All output
+	XGpio_SetDataDirection(&Gpio1, 2, 0xFF); // All input
+	XGpio_SetDataDirection(&Gpio2, 1, 0xFF); // All input
+
+	xTaskCreate( vTaskInput, "Task Input", 2048, NULL, 1, NULL );
+	xTaskCreate( vTaskProcess, "Task Process", 2048, (void*)efi, 1, NULL );
+
+	vTaskStartScheduler();
+
+	return 0;
+}
+
+void vTaskInput(void*) {
+	cout << "\nCreate TaskInput successfully!\n";
+	int i = 0;
+	const TickType_t xDelay = 3 / portTICK_PERIOD_MS;
+	while(1) {
+		cout << "******************************\n\r";
+		cout << "* User Peripheral Write Test\n\r";
+		cout << "******************************\n\n\r";
+
+		/*
+		* Write to user logic slave module register(s) and read back
+		*/
+		cout << "User logic slave module test...\n\r";
+
+		float map = MAP_VFROM + static_cast<float>(rand()) * static_cast<float>(MAP_VTO - MAP_VFROM) / RAND_MAX;
+		cout << "MAP = " << map << "\n\r";
+		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG0_OFFSET, map);
+
+		float mat = MAT_VFROM + static_cast<float>(rand()) * static_cast<float>(MAT_VTO - MAT_VFROM) / RAND_MAX;
+		cout << "MAT = " << mat << "\n\r";
+		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG1_OFFSET, mat);
+
+		float clt = CLT_VFROM + static_cast<float>(rand()) * static_cast<float>(CLT_VTO - CLT_VFROM) / RAND_MAX;
+		cout << "CLT = " << clt << "\n\r";
+		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG2_OFFSET, clt);
+
+		float ego = EGO_VFROM + static_cast<float>(rand()) * static_cast<float>(EGO_VTO - EGO_VFROM) / RAND_MAX;
+		cout << "EGO = " << ego << "\n\r";
+		EFI_VIRTUAL_INPUT_mWriteReg (VIRTUAL_INPUT_BASE_ADDR, EFI_VIRTUAL_INPUT_S00_AXI_SLV_REG3_OFFSET, ego);
+
+		if(i++ > 20) {
+			cout << endl << "Dung";
+			break;
+		}
+
+		vTaskDelay( xDelay );
+	}
+}
+
+void vTaskProcess(void* parameter) {
+	cout << "\nCreate TaskProcess successfully!\n";
+	EFI* efi = (EFI*)parameter;
+	int i = 0;
+	const TickType_t xDelay = 3 / portTICK_PERIOD_MS;
+	while(1) {
+		vTaskDelay( xDelay );
+		cout << "******************************\n\r";
+		cout << "* User Peripheral Read Test\n\r";
+		cout << "******************************\n\n\r";
+		efi->checkSensor();
+		if(i++ > 20) {
+			cout << endl << "Dung";
+			break;
+		}
+	}
+}
